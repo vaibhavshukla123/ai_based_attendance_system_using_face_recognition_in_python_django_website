@@ -1,0 +1,129 @@
+{% extends 'ai_attendance_system/main.html' %}
+{% block content %}
+{% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endif %}
+	{% endfor %}
+{% if ta == False %}
+<div id="searchattendance">
+    <br><br><br><br>
+</div>
+
+
+<center><h1 class="fontwhite">Search Attendance</h1></center>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<center>
+				<form method="get">
+					{{myFilter.form}}
+					<br>
+
+		    		<button class="btn btn-primary" type="submit">Search</button>
+				</form>
+			</center>
+		</div>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Student ID</th>
+					<th>Branch</th>
+					<th>Year</th>
+					<th>Section</th>
+					<th>Period</th>
+					<th>Status</th>
+					<th>Date</th>
+					<th>Time</th>
+				</tr>
+
+				{% for attendance in attendances %}
+
+				<tr>
+                    <td>{{ attendance.Student_ID }}</td>					
+					<td>{{ attendance.student.firstname }}</td>
+                    <td>{{ attendance.Student_ }}</td>
+					<td>{{ attendance.branch }}</td>
+					<td>{{ attendance.year }}</td>
+					<td>{{ attendance.section }}</td>
+					<td>{{ attendance.period }}</td>
+					<td>
+						{%if attendance.status == 'Present' %}
+						 
+							<span class="badge badge-pill badge-success">{{ attendance.status }}</span>
+
+						{% else %}
+							<span class="badge badge-pill badge-danger">{{ attendance.status }}</span>
+
+						{% endif %}
+
+					</td>
+					<td>{{ attendance.date }}</td>
+					<td>{{ attendance.time }}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+{% else %}
+<div>
+	<a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Home</a>
+</div>
+	<center><h1 class="fontwhite">Present Period Attendance</h1></center>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card card-body">
+				<table class="table table-sm">
+					<tr>
+						<th>Student ID</th>
+						<th>Branch</th>
+						<th>Year</th>
+						<th>Section</th>
+						<th>Period</th>
+						<th>Status</th>
+					</tr>
+	
+					{% for attendance in attendances %}
+	
+					<tr>
+						<td>{{ attendance.Student_ID }}</td>
+						<td>{{ attendance.branch }}</td>
+						<td>{{ attendance.year }}</td>
+						<td>{{ attendance.section }}</td>
+						<td>{{ attendance.period }}</td>
+						<td>{{ attendance.status }}</td>
+					</tr>
+					{% endfor %}
+	
+				</table>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+{% endif %}
+
+<script>
+	$('html, body').animate({
+		scrollTop: $("#searchattendance").offset().top
+	}, 2000);
+</script>
+
+{% endblock %}

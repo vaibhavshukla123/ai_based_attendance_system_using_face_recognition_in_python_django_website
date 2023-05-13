@@ -1,0 +1,748 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Attendance System</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<style>
+		.no-gutters1 {
+			margin-right: 0;
+ 			margin-left: 0;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+			
+
+		}
+		body { color: #ccc ;
+			background-color: #000 !important;
+		
+		
+		
+		}
+		.footer-widget p {
+			margin-bottom: 27px;
+			
+		
+		}
+		p {
+			font-family: 'Nunito', sans-serif;
+			font-size: 16px;
+		  color:white;
+			line-height: 28px;
+		}
+		
+		   .animate-border {
+		  position: relative;
+		  display: block;
+		  width: 115px;
+		  height: 3px;
+		  background: #007bff; }
+		
+		.animate-border:after {
+		  position: absolute;
+		  content: "";
+		  width: 35px;
+		  height: 3px;
+		  left: 0;
+		  bottom: 0;
+		  border-left: 10px solid #fff;
+		  border-right: 10px solid #fff;
+		  -webkit-animation: animborder 2s linear infinite;
+		  animation: animborder 2s linear infinite; }
+		
+		@-webkit-keyframes animborder {
+		  0% {
+			-webkit-transform: translateX(0px);
+			transform: translateX(0px); }
+		  100% {
+			-webkit-transform: translateX(113px);
+			transform: translateX(113px); } }
+		
+		@keyframes animborder {
+		  0% {
+			-webkit-transform: translateX(0px);
+			transform: translateX(0px); }
+		  100% {
+			-webkit-transform: translateX(113px);
+			transform: translateX(113px); } }
+		
+		.animate-border.border-white:after {
+		  border-color: #fff; }
+		
+		.animate-border.border-yellow:after {
+		  border-color: #F5B02E; }
+		
+		.animate-border.border-orange:after {
+		  border-right-color: #007bff;
+		  border-left-color: #007bff; }
+		
+		.animate-border.border-ash:after {
+		  border-right-color: #EEF0EF;
+		  border-left-color: #EEF0EF; }
+		
+		.animate-border.border-offwhite:after {
+		  border-right-color: #F7F9F8;
+		  border-left-color: #F7F9F8; }
+		
+		/* Animated heading border */
+		@keyframes primary-short {
+		  0% {
+			width: 15%; }
+		  50% {
+			width: 90%; }
+		  100% {
+			width: 10%; } }
+		
+		@keyframes primary-long {
+		  0% {
+			width: 80%; }
+		  50% {
+			width: 0%; }
+		  100% {
+			width: 80%; } } 
+		
+		.dk-footer {
+		  padding: 75px 0 0;
+		  background-color: #151414;
+		  position: relative;
+		  margin-top: 135px;
+		  z-index: 2; }
+		  .dk-footer .contact-us {
+			margin-top: 0;
+			margin-bottom: 30px;
+			padding-left: 80px; }
+			.dk-footer .contact-us .contact-info {
+			  margin-left: 50px; }
+			.dk-footer .contact-us.contact-us-last {
+			  margin-left: -80px; }
+		  .dk-footer .contact-icon i {
+			font-size: 24px;
+			position: relative;
+			color:#007bff; }
+		
+		.dk-footer-box-info {
+		  position: absolute;
+		  top: -122px;
+		  background: #202020;
+		  padding: 40px;
+		  z-index: 2; }
+		  .dk-footer-box-info .footer-social-link h3 {
+			color: #fff;
+			font-size: 24px;
+			margin-bottom: 25px; }
+		  .dk-footer-box-info .footer-social-link ul {
+			list-style-type: none;
+			padding: 0;
+			margin: 0; }
+		  .dk-footer-box-info .footer-social-link li {
+			display: inline-block; }
+		  .dk-footer-box-info .footer-social-link a i {
+			display: block;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			background: #000;
+			margin-right: 5px;
+			color: #fff; }
+			.dk-footer-box-info .footer-social-link a i.fa-facebook {
+			  background-color: #3B5998; }
+			.dk-footer-box-info .footer-social-link a i.fa-twitter {
+			  background-color: #55ACEE; }
+			.dk-footer-box-info .footer-social-link a i.fa-google-plus {
+			  background-color: #DD4B39; }
+			.dk-footer-box-info .footer-social-link a i.fa-linkedin {
+			  background-color: #0976B4; }
+			.dk-footer-box-info .footer-social-link a i.fa-instagram {
+			  background-color: #B7242A; }
+		
+		.footer-awarad {
+		  margin-top: 285px;
+		  display: -webkit-box;
+		  display: -webkit-flex;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: flex;
+		  -webkit-box-flex: 0;
+		  -webkit-flex: 0 0 100%;
+		  -moz-box-flex: 0;
+		  -ms-flex: 0 0 100%;
+		  flex: 0 0 100%;
+		  -webkit-box-align: center;
+		  -webkit-align-items: center;
+		  -moz-box-align: center;
+		  -ms-flex-align: center;
+		  align-items: center; }
+		  .footer-awarad p {
+			color: #fff;
+			font-size: 24px;
+			font-weight: 700;
+			margin-left: 20px;
+			padding-top: 15px; }
+		
+		.footer-info-text {
+		  margin: 26px 0 32px; }
+		
+		.footer-left-widget {
+		  padding-left: 80px; }
+		
+		.footer-widget .section-heading {
+		  margin-bottom: 35px; }
+		
+		.footer-widget h3 {
+		  font-size: 24px;
+		  color: #fff;
+		  position: relative;
+		  margin-bottom: 15px;
+		  max-width: -webkit-fit-content;
+		  max-width: -moz-fit-content;
+		  max-width: fit-content; }
+		
+		.footer-widget ul {
+		  width: 50%;
+		  float: left;
+		  list-style: none;
+		  margin: 0;
+		  padding: 0; }
+		
+		.footer-widget li {
+		  margin-bottom: 18px; }
+		
+		.footer-widget p {
+		  margin-bottom: 27px; }
+		
+		.footer-widget a {
+		  color: #878787;
+		  -webkit-transition: all 0.3s;
+		  -o-transition: all 0.3s;
+		  transition: all 0.3s; }
+		  .footer-widget a:hover {
+			color: #007bff; }
+		
+		.footer-widget:after {
+		  content: "";
+		  display: block;
+		  clear: both; }
+		
+		.dk-footer-form {
+		  position: relative; }
+		  .dk-footer-form input[type=email] {
+			padding: 14px 28px;
+			border-radius: 50px;
+			background: #2E2E2E;
+			border: 1px solid #2E2E2E; }
+		  .dk-footer-form input::-webkit-input-placeholder, .dk-footer-form input::-moz-placeholder, .dk-footer-form input:-ms-input-placeholder, .dk-footer-form input::-ms-input-placeholder, .dk-footer-form input::-webkit-input-placeholder {
+			color: #878787;
+			font-size: 14px; }
+		  .dk-footer-form input::-webkit-input-placeholder, .dk-footer-form input::-moz-placeholder, .dk-footer-form input:-ms-input-placeholder, .dk-footer-form input::-ms-input-placeholder, .dk-footer-form input::placeholder {
+			color: #878787;
+			font-size: 14px; }
+		  .dk-footer-form button[type=submit] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 12px 24px 12px 17px;
+			border-top-right-radius: 25px;
+			border-bottom-right-radius: 25px;
+			border: 1px solid #007bff;
+			background: #007bff;
+			color: #fff; }
+		  .dk-footer-form button:hover {
+			cursor: pointer; }
+		
+		/* ==========================
+		
+			Contact
+		
+		=============================*/
+		.contact-us {
+		  position: relative;
+		  z-index: 2;
+		  margin-top: 65px;
+		  display: -webkit-box;
+		  display: -webkit-flex;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: flex;
+		  -webkit-box-align: center;
+		  -webkit-align-items: center;
+		  -moz-box-align: center;
+		  -ms-flex-align: center;
+		  align-items: center; }
+		
+		.contact-icon {
+		  position: absolute; }
+		  .contact-icon i {
+			font-size: 36px;
+			top: -5px;
+			position: relative;
+			color: #007bff; }
+		
+		.contact-info {
+		  margin-left: 75px;
+		  color: #fff; }
+		  .contact-info h3 {
+			font-size: 20px;
+			color: #fff;
+			margin-bottom: 0; }
+		
+		.copyright {
+		  padding: 28px 0;
+		  margin-top: 55px;
+		  background-color: #202020; }
+		  .copyright span,
+		  .copyright a {
+			color: #878787;
+			-webkit-transition: all 0.3s linear;
+			-o-transition: all 0.3s linear;
+			transition: all 0.3s linear; }
+		  .copyright a:hover {
+			color:#007bff; }
+		
+		.copyright-menu ul {
+		  text-align: right;
+		  margin: 0; }
+		
+		.copyright-menu li {
+		  display: inline-block;
+		  padding-left: 20px; }
+		
+		.back-to-top {
+		  position: relative;
+		  z-index: 2; }
+		  .back-to-top .btn-dark {
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			padding: 0;
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: #2e2e2e;
+			border-color: #2e2e2e;
+			display: none;
+			z-index: 999;
+			-webkit-transition: all 0.3s linear;
+			-o-transition: all 0.3s linear;
+			transition: all 0.3s linear; }
+			.back-to-top .btn-dark:hover {
+			  cursor: pointer;
+			  background: #FA6742;
+			  border-color: #FA6742; }
+
+		
+		/* New code */
+		
+
+		/* .container {
+		max-width: 60em;
+		margin: 0 auto;
+		} */
+
+		a {
+		color: #fc0;
+		}
+
+		/* basic menu styles */
+		.block-menu {
+			display: block;
+			background: #000000;
+			margin-top: 2px;
+		}
+
+		.block-menu li {
+			display: inline-block;
+		}
+
+		.block-menu li a {
+			color: #fff;
+			display: block;
+			text-decoration: none;
+			font-family: 'Passion One', Arial, sans-serif;
+			font-smoothing: antialiased;
+			text-transform: uppercase;
+			overflow: visible;
+			line-height: 20px;
+			font-size: 16px;
+			padding: 15px 10px;
+		}
+
+		/* animation domination */
+		.three-d {
+			perspective: 200px;
+			transition: all .07s linear;
+			position: relative;
+			cursor: pointer;
+		} 
+			{% comment %} /* complete the animation! */
+			.three-d:hover .three-d-box, 
+			.three-d:focus .three-d-box {
+				transform: translateZ(-25px) rotateX(90deg);
+			} {% endcomment %}
+
+		 .three-d-box {
+			transition: all .3s ease-out;
+			transform: translatez(-25px);
+			transform-style: preserve-3d;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+		} 
+
+		/* 
+			put the "front" and "back" elements into place with CSS transforms, 
+			specifically translation and translatez
+		*/
+		.front {
+			transform: rotatex(0deg) translatez(25px);
+		}
+
+		.back {
+			transform: rotatex(-90deg) translatez(25px);
+			color: #ffe7c4;
+		}
+
+		.front, .back {
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgb(0, 0, 0);
+			padding: 15px 10px;
+			color: white;
+			pointer-events: none;
+			box-sizing: border-box;
+		}
+		
+
+		.back {
+		background: #ff0000;
+		}
+		/* new code :end */
+		/* new code 1 */
+		a,p,h1,h2,h3,h4,ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		.section-services {
+			padding-top: 110px;
+			padding-bottom: 120px;
+			font-family: "Poppins", sans-serif;
+			background-color: #211f24;
+			color: #fff;
+		}
+
+		.section-services .header-section {
+			margin-bottom: 35px;
+		}
+
+		.section-services .header-section .title {
+			position: relative;
+			margin-bottom: 40px;
+			padding-bottom: 25px;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+		.section-services .header-section .title:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 140px;
+			height: 1px;
+			background-color: #FF0000;
+		}
+
+		.section-services .header-section .title:after {
+			content: "";
+			position: absolute;
+			bottom: -1px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 45px;
+			height: 3px;
+			background-color: #f70037;
+		}
+
+		.section-services .header-section .title span {
+			color: #f70037;
+		}
+
+		.section-services .header-section .description {
+			color: #6f6f71;
+		}
+
+		.section-services .single-service {
+			margin-top: 40px;
+			background-color: #24252a;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+		}
+
+		.section-services .single-service .part-1 {
+			padding: 40px 40px 25px;
+			border-bottom: 2px solid #1d1e23;
+		}
+
+		.section-services .single-service .part-1 i {
+			margin-bottom: 25px;
+			font-size: 50px;
+			color: #f70037;
+		}
+
+		.section-services .single-service .part-1 .title {
+			font-size: 17px;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+			line-height: 1.8em;
+		}
+
+		.section-services .single-service .part-2 {
+			padding: 30px 40px 40px;
+		}
+
+		.section-services .single-service .part-2 .description {
+			margin-bottom: 22px;
+			color: #6f6f71;
+			font-size: 14px;
+			line-height: 1.8em;
+		}
+
+		.section-services .single-service .part-2 a {
+			color: #fff;
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+		.section-services .single-service .part-2 a i {
+			margin-right: 10px;
+			color: #f70037;
+		}
+		
+		.single-service{
+			transition: 1s;
+		}
+
+		.single-service:hover{
+		transform: scale(1.1);
+		background: #ff800a;
+		z-index: 2;
+		box-shadow: 2px 2px 2px #000;
+		
+	}
+	.fontwhite{
+		color: white;
+	}
+
+
+
+
+
+
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+</head>
+<body>
+	{%  include 'ai_attendance_system/navbar.html' %}
+	<br>
+<br>
+<br>
+	<div class="container-fluid no-gutters1">
+		<img src="{% static 'images/background.png' %}" width="100%">
+
+	{% block content %}
+
+	{% endblock %}
+    </div>
+
+
+
+
+
+
+{% comment %} Footer {% endcomment %} 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<footer id="dk-footer" class="dk-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="dk-footer-box-info">
+                        <a href="index.html" class="footer-logo">
+                            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="footer_logo" class="img-fluid"></a>
+                        </a>
+                        <p class="footer-info-text">
+                           This website offers attendance system which helps to School/College to take attendance efficiently.
+                        </p>
+                        <div class="footer-social-link">
+                            <h3>Follow us</h3>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Social link -->
+                    </div>
+                    <!-- End Footer info -->
+                    
+                </div>
+                <!-- End Col -->
+                <div class="col-md-12 col-lg-8">
+                    <div class="row">
+			
+						<div class="col-md-6 col-lg-6">
+							<div class="footer-widget footer-left-widget">
+								<div class="section-heading">
+									<h3>Useful Links</h3>
+									<span class="animate-border border-black"></span>
+								</div>
+								<ul>
+									<li>
+										<a href="{% url 'attendance' %}">Take attendance</a>
+									</li>
+									<li>
+										<a href="{% url 'addstudent' %}">Add student</a>
+									</li>
+									<li>
+										<a href="{% url 'studentUpdate' %}">Update Student Details</a>
+									</li>
+									<li>
+										<a href="{% url 'searchattendance' %}" >Search Attendance</a>
+									</li>
+								</ul>
+								
+							</div>
+							<!-- End Footer Widget -->
+						</div>
+								
+                        
+
+
+						<div class="col-md-4">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3727.1461703150235!2d72.89655261540118!3d20.906438097317597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0f76000948dc1%3A0x70650fb7759fdaa8!2sMahatma%20Gandhi%20Institute%20Of%20Technical%20Education%20And%20Research%20Center!5e0!3m2!1sen!2sin!4v1678627219393!5m2!1sen!2sin" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><p>NPE Campus Navsari</p>
+									
+                            <!-- End Contact Us -->
+                        </div>
+                    </div>
+					
+                    <!-- End Contact Row -->
+                    <div class="row">
+                        
+                        <!-- End col -->
+                        {% comment %} <div class="col-md-12 col-lg-6">
+                            <div class="footer-widget footer-left-widget">
+                                <div class="section-heading">
+                                    <h3>Subscribe</h3>
+                                    <span class="animate-border border-black"></span>
+                                </div>
+                                <p><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                                Subscribe to our newsletter </p>
+                                <form action="#">
+                                    <div class="form-row">
+                                        <div class="col dk-footer-form">
+                                            <input type="email" class="form-control" placeholder="Email Address">
+                                            <button type="submit">
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- End form -->
+                            </div>
+                            <!-- End footer widget -->
+                        </div> {% endcomment %}
+                        <!-- End Col -->
+                    </div>
+                    <!-- End Row -->
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Widget Row -->
+        </div>
+        <!-- End Contact Container -->
+
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <span>Copyright © 2023, All Right Reserved MGITER Attendance System</span>
+                    </div>
+                    <!-- End Col -->
+                    <div class="col-md-6">
+                        <div class="copyright-menu">
+                            <ul>
+                                
+                                <li>
+                                    <a href="#">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Copyright Container -->
+        </div>
+        <!-- End Copyright -->
+        <!-- Back to top -->
+        <div id="back-to-top" class="back-to-top">
+            <a href="#"><button class="btn btn-dark" title="Back to Top" style="display: block;">
+                <i class="fa fa-angle-up"></i>
+            </button>
+		</a>
+        </div>
+        <!-- End Back to top -->
+</footer>
+
+</body>
+</html>
