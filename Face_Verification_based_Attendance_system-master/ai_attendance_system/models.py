@@ -74,5 +74,5 @@ class Attendance(models.Model):
     section = models.CharField(max_length=200, null = True)
     period = models.CharField(max_length=200, null = True)
     status = models.CharField(max_length=200, null = True, default='Absent')
-    def __str__(self):
-        return str(self.Student_ID + "_" + str(self.date)+ "_" + str(self.period))
+    # def __str__(self):
+    #     return str(self.Student_ID + "_" + str(self.date)+ "_" + str(self.period))

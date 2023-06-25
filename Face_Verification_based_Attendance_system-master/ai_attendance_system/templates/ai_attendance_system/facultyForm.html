@@ -1,6 +1,13 @@
 {%  extends 'ai_attendance_system/main.html' %}
 {% block content %}
 
+
+
+
+<div id="account">
+    <br><br>
+</div>
+
 <style>
 	.profile-pic{
 		max-width: 200px;
@@ -36,5 +43,10 @@
 </div>
 
 
+<script>
+	$('html, body').animate({
+	   scrollTop: $("#account").offset().top
+   }, 2000);
+</script>
 
 {% endblock %}
