@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'ai_attendance_system',
     'django_filters',
+    'django_forms_bootstrap',
 ]
 
 MIDDLEWARE = [

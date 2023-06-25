@@ -11,6 +11,8 @@ from .models import Student, Attendance
 from .filters import AttendanceFilter
 from django.views.decorators.csrf import csrf_exempt
 import requests
+from django.contrib.admin.widgets import AdminDateWidget
+
 
 
 # from django.views.decorators import gzip
@@ -159,9 +161,37 @@ def takeAttendance(request):
     return render(request, 'ai_attendance_system/take_attendance.html', context)
 
 def searchAttendance(request):
-    attendances = Attendance.objects.all()
-    myFilter = AttendanceFilter(request.GET, queryset=attendances)
+    # attendances = Attendance.objects.all()
+    x = list(request.GET.keys())
+    to_date = date.today()
+
+
+    print("to_date")
+    print(to_date)
+    flag = 0
+    if(x.count('from_date') and  request.GET['from_date'] != ''):
+        from_date = request.GET['from_date']
+        flag = 1
+    
+    if(x.count('to_date') and  request.GET['to_date'] != ''):
+        to_date = request.GET['to_date']
+
+
+
+    if(flag == 1):
+        attendances = Attendance.objects.filter(date__lte=to_date,date__gte=from_date)
+    else:
+        attendances = Attendance.objects.all()
+
+    # print()
+    print("request.GET")
+
+   
+
+
+    myFilter = AttendanceFilter( request.GET, queryset=attendances)
     attendances = myFilter.qs
+    # attendances = attendances
     context = {'myFilter':myFilter, 'attendances': attendances, 'ta':False}
     return render(request, 'ai_attendance_system/attendance.html', context)
 
@@ -412,7 +442,7 @@ def saveAttendance(request):
         for student in students:
             if str(student.registration_id) in names:
                 attendance = Attendance(Faculty_Name = request.user.faculty, 
-                Student_ID = str(student.registration_id), 
+                student_id = str(student.registration_id), 
                 period = details['period'], 
                 branch = details['branch'], 
                 year = details['year'], 
@@ -421,7 +451,7 @@ def saveAttendance(request):
                 attendance.save()
             else:
                 attendance = Attendance(Faculty_Name = request.user.faculty, 
-                Student_ID = str(student.registration_id), 
+                student_id = str(student.registration_id), 
                 period = details['period'],
                 branch = details['branch'], 
                 year = details['year'], 

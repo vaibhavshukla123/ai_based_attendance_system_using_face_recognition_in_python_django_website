@@ -559,9 +559,46 @@
 
 
 	</style>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+
+		<script>
+			$( function() {
+// 			  $( "#from_date" ).datepicker({
+//       dateFormat: 'yy-mm-dd'
+// });
+
+// $( "#to_date" ).datepicker({
+//       dateFormat: 'yy-mm-dd'
+// });
+
+var dateToday = new Date();
+
+
+var dates = $("#from_date, #to_date").datepicker({
+    changeMonth: true,
+	dateFormat: 'yy-mm-dd',
+    numberOfMonths: 1,
+    onSelect: function(selectedDate) {
+        var option = this.id == "from_date" ? "minDate" : "maxDate",
+            instance = $(this).data("datepicker"),
+            date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+        dates.not(this).datepicker("option", option, date);
+		}
+	});
+
+			} );
+
+
+
+
+
+			</script>
 </head>
 <body>
 	{%  include 'ai_attendance_system/navbar.html' %}
